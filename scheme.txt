@@ -1,0 +1,2 @@
+students#name#str#id#int#dept#str
+depts#name#str#office#str
