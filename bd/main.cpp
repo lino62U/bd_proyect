@@ -50,19 +50,7 @@ void create(string query)
         for(int k=start + aux.length()+1; k<query.length()+1;k++ ){
             if(query[k] == ' '){
                 string aux2=token;
-                /*for (size_t m = 0;  m< i; m++)
-                {
-                    if( token[m]=='(' || token[m]==',' || token[m]==')')
-                        continue;
-                    else                    
-                        aux2+=token[m]; 
-                }
-                
-                if(k==query.length()-2)
-                    archivo<<aux2;
-                else
-                    archivo<<aux2<<'#';
-                */
+     
                 cout<<aux2<<endl;
                 aux2.clear();
                 lengh_char=2;
@@ -88,32 +76,30 @@ void create(string query)
 void insert(string query)
 {
     ofstream archivo;
-    archivo.open("scheme.txt", fstream::app);
-    archivo<<"\n";
+   // archivo.open("scheme.txt", fstream::app);
+    //archivo<<"\n";
 
     int lengh_char = 2;
     int i=0;
     char *token = new char[lengh_char];
     string aux ="INTO";
+    strubg vaux = "VALUE";
     int start = query.find(aux);
-    int vStart = query.find("VALUE");
-    if(start>-1)
+    int vStart = query.find(vaux);
+    string nameR = query.substr(start +1, vStart - start);
+    if(vStart>-1)
     {
-        for(int k=start + aux.length()+1; k<query.length()+1;k++ ){
+        for(int k=vStart + vaux.length()+1; k<query.length()+1;k++ ){
             if(query[k] == ' '){
-                string aux2="";
-                for (size_t m = 0;  m< i; m++)
-                {
-                    if( token[m]=='(' || token[m]==',' || token[m]==')')
-                        continue;
-                    else                    
-                        aux2+=token[m]; 
-                }
-                
+                string aux2=token;
+     
+                cout<<aux2<<endl;
+                /*
                 if(k==query.length()-2)
                     archivo<<aux2;
                 else
                     archivo<<aux2<<'#';
+                    */
 
                 aux2.clear();
                 lengh_char=2;
@@ -122,11 +108,16 @@ void insert(string query)
                 token = new char[lengh_char];
 
             }else{ 
-                token[i] = query[k];
-                token[i+1] = '\0';
-                i++;
-                lengh_char++;
-                token = (char*)realloc(token, lengh_char * sizeof(char)); // redimensionamos el token
+                if( query[k]=='(' || query[k]==',' || query[k]==')')
+                    continue;
+                else                    
+                { 
+                    token[i] = query[k];
+                    token[i+1] = '\0';
+                    i++;
+                    lengh_char++;
+                    token = (char*)realloc(token, lengh_char * sizeof(char));
+                }
             }
         }
     }
