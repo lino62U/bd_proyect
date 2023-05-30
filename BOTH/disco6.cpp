@@ -308,7 +308,7 @@ class Disco
             
             
             cout<<"\n************************************************************************************"<<endl;
-            cout<<"\tShow Register "<<n<<":"<<endl;
+            cout<<"\tShow Register "<<n<<":\n"<<endl;
             cout<<A<<endl;
             cout<<"\n\n\t*************************************"<<endl;
             cout<<"\n\tInformation: "<<endl;
@@ -1235,7 +1235,7 @@ int main()
     string nameTable = "titanic";
     Disco disco(4, 10, 200, 692);
     disco.loadDataScheme("scheme",nameTable.c_str());
-    disco.getOneRegister(892,"titanic2");
+    disco.getOneRegister(891,"titanic2");
     // disco.getDisk_info();
     // disco.getSector(0,0,0,1);
     // opcion_4(&disco);
